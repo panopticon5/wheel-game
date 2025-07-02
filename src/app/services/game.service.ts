@@ -19,9 +19,9 @@ export class GameService {
   ];
 
   private readonly _predeterminedSegmentId = 3;
-  private readonly selectedSegmentSubject = new BehaviorSubject<WheelSegment | null>(null);
+  private readonly _selectedSegmentSubject = new BehaviorSubject<WheelSegment | null>(null);
 
-  public selectedSegment$ = this.selectedSegmentSubject.asObservable();
+  public selectedSegment$ = this._selectedSegmentSubject.asObservable();
 
   /**
    * Get all wheel segments
@@ -34,7 +34,7 @@ export class GameService {
    * Get the currently selected segment
    */
   public getSelectedSegment(): WheelSegment | null {
-    return this.selectedSegmentSubject.value;
+    return this._selectedSegmentSubject.value;
   }
 
   /**
@@ -43,7 +43,7 @@ export class GameService {
   public selectRandomSegment(): WheelSegment {
     const randomIndex = Math.floor(Math.random() * this._wheelSegments.length);
     const selectedSegment = this._wheelSegments[randomIndex];
-    this.selectedSegmentSubject.next(selectedSegment);
+    this._selectedSegmentSubject.next(selectedSegment);
     return selectedSegment;
   }
 
@@ -52,9 +52,9 @@ export class GameService {
    */
   public selectPredeterminedSegment(): WheelSegment {
     const predeterminedSegment = this._wheelSegments.find(
-      segment => segment.id === this._predeterminedSegmentId
+      (segment: WheelSegment) => segment.id === this._predeterminedSegmentId
     )!;
-    this.selectedSegmentSubject.next(predeterminedSegment);
+    this._selectedSegmentSubject.next(predeterminedSegment);
     return predeterminedSegment;
   }
 
@@ -77,6 +77,6 @@ export class GameService {
    * Reset the game state
    */
   public resetGame(): void {
-    this.selectedSegmentSubject.next(null);
+    this._selectedSegmentSubject.next(null);
   }
 }
