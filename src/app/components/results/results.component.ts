@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { GameService, WheelSegment } from '../../services/game.service';
+import { GameService } from '../../services/game.service';
+import {WheelSegment} from '../../types/wheel.types';
 
 @Component({
   selector: 'results',

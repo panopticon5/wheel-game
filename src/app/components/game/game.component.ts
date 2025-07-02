@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { GameService, WheelSegment } from '../../services/game.service';
+import { GameService } from '../../services/game.service';
 import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from '@angular/material/card';
 import {MatIcon} from '@angular/material/icon';
 import {of} from 'rxjs';
 import {MatButton} from '@angular/material/button';
 import {MatProgressSpinner} from '@angular/material/progress-spinner';
+import {WheelSegment} from '../../types/wheel.types';
 
 @Component({
   selector: 'game',

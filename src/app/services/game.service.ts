@@ -1,11 +1,6 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-
-export interface WheelSegment {
-  id: number;
-  label: string;
-  color: string;
-}
+import {Injectable} from '@angular/core';
+import {BehaviorSubject} from 'rxjs';
+import {WheelSegment} from '../types/wheel.types';
 
 @Injectable({
   providedIn: 'root'
