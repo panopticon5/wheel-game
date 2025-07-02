@@ -30,12 +30,12 @@ export class GameComponent implements OnInit, OnDestroy {
   private _spinTimeout?: number;
 
   constructor(
-    private gameStateService: GameService,
-    private router: Router
+    private _gameService: GameService,
+    private _router: Router
   ) {}
 
   public ngOnInit(): void {
-    this.segments = this.gameStateService.getWheelSegments();
+    this.segments = this._gameService.getWheelSegments();
   }
 
   public ngOnDestroy(): void {
@@ -48,7 +48,7 @@ export class GameComponent implements OnInit, OnDestroy {
    * Perform a random spin - lands on a random segment
    */
   public spinRandom(): void {
-    const selectedSegment = this.gameStateService.selectRandomSegment();
+    const selectedSegment = this._gameService.selectRandomSegment();
     this._performSpin(selectedSegment);
   }
 
@@ -56,7 +56,7 @@ export class GameComponent implements OnInit, OnDestroy {
    * Perform a predetermined spin - always lands on segment #3
    */
   public spinPredetermined(): void {
-    const selectedSegment = this.gameStateService.selectPredeterminedSegment();
+    const selectedSegment = this._gameService.selectPredeterminedSegment();
     this._performSpin(selectedSegment);
   }
 
@@ -80,12 +80,12 @@ export class GameComponent implements OnInit, OnDestroy {
     this.currentRotation = totalRotation;
 
     // Set the selected segment in the service
-    this.gameStateService.selectedSegment$ = of(targetSegment);
+    this._gameService.selectedSegment$ = of(targetSegment);
 
     // Navigate to results after spin completes
     this._spinTimeout = window.setTimeout(() => {
       this.isSpinning = false;
-      this.router.navigate(['/results']);
+      this._router.navigate(['/results']);
     }, 3000); // 3 second spin duration
   }
 }

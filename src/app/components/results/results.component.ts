@@ -14,17 +14,17 @@ export class ResultsComponent implements OnInit {
   public selectedSegment: WheelSegment | null = null;
 
   constructor(
-    private gameStateService: GameService,
-    private router: Router
+    private _gameService: GameService,
+    private _router: Router
   ) {}
 
   public ngOnInit(): void {
     // Get the selected segment from the game state
-    this.selectedSegment = this.gameStateService.getSelectedSegment();
+    this.selectedSegment = this._gameService.getSelectedSegment();
 
     // If no segment is selected, redirect to welcome page
     if (!this.selectedSegment) {
-      this.router.navigate(['/welcome']);
+      this._router.navigate(['/welcome']);
     }
   }
 
@@ -33,6 +33,6 @@ export class ResultsComponent implements OnInit {
    * Reset the game state and navigate to welcome page
    */
   public restartGame(): void {
-    this.gameStateService.resetGame();
+    this._gameService.resetGame();
   }
 }
