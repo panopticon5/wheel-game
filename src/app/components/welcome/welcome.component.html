@@ -1,0 +1,28 @@
+<div class="container">
+  <mat-card class="welcome-card mat-elevation-z8">
+    <mat-card-content>
+      <div class="welcome-content">
+        <div class="brand-section">
+          <div class="logo">
+            <mat-icon class="wheel-icon">casino</mat-icon>
+          </div>
+          <h1 class="mat-headline-1 brand-title">Spin & Win</h1>
+          <p class="mat-body-1 brand-subtitle">Test your luck with our spinning wheel game!</p>
+        </div>
+
+        <div class="cta-section">
+          <button
+            mat-raised-button
+            color="primary"
+            class="get-started-btn"
+            routerLink="/game"
+            (click)="onGetStarted()"
+          >
+            <mat-icon>play_arrow</mat-icon>
+            Get Started
+          </button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
