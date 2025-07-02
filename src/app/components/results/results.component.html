@@ -1,46 +1,45 @@
 
 <div class="container">
-  <div class="results-content" *ngIf="selectedSegment; else noResult">
-    <div class="result-display">
-      <div class="trophy">🏆</div>
-      <h1 class="results-title">Congratulations!</h1>
-      <p class="results-subtitle">You landed on:</p>
+  @if (selectedSegment) {
+    <div class="results-content">
+      <div class="result-display">
+        <div class="trophy">🏆</div>
+        <h1 class="results-title">Congratulations!</h1>
+        <p class="results-subtitle">You landed on:</p>
 
-      <div
-        class="winning-segment"
-        [style.background-color]="selectedSegment.color"
-      >
-        <span class="segment-name">{{ selectedSegment.label }}</span>
+        <div
+          class="winning-segment"
+          [style.background-color]="selectedSegment.color"
+        >
+          <span class="segment-name">{{ selectedSegment.label }}</span>
+        </div>
+
+        <div class="segment-details">
+          <p class="segment-id">Segment #{{ selectedSegment.id }}</p>
+        </div>
       </div>
 
-      <div class="segment-details">
-        <p class="segment-id">Segment #{{ selectedSegment.id }}</p>
+      <div class="actions">
+        <a
+          routerLink="/welcome"
+          class="btn btn-primary"
+          (click)="restartGame()"
+        >
+          Play Again
+        </a>
+        <a
+          routerLink="/game"
+          class="btn btn-secondary"
+        >
+          Spin Again
+        </a>
       </div>
     </div>
-
-    <div class="actions">
-      <a
-        routerLink="/welcome"
-        class="btn btn-primary"
-        (click)="restartGame()"
-      >
-        Play Again
-      </a>
-      <a
-        routerLink="/game"
-        class="btn btn-secondary"
-      >
-        Spin Again
-      </a>
-    </div>
-  </div>
-
-  <!-- Fallback template if no result is available -->
-  <ng-template #noResult>
+  } @else {
     <div class="no-result">
       <h2>No Result Available</h2>
       <p>It looks like you haven't spun the wheel yet.</p>
       <a routerLink="/game" class="btn btn-primary">Go to Game</a>
     </div>
-  </ng-template>
+  }
 </div>
