@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { GameService } from '../../services/game.service';
 import {WheelSegment} from '../../types/wheel.types';
 
@@ -9,7 +8,7 @@ import {WheelSegment} from '../../types/wheel.types';
   standalone: true,
   templateUrl: './results.component.html',
   styleUrl: './results.component.scss',
-  imports: [CommonModule, RouterLink]
+  imports: [RouterLink]
 })
 export class ResultsComponent implements OnInit {
   public selectedSegment: WheelSegment | null = null;
