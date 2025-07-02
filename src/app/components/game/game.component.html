@@ -1,0 +1,72 @@
+<div class="game-container">
+  <mat-card class="game-card">
+    <mat-card-header>
+      <mat-card-title class="game-title">
+        <mat-icon>casino</mat-icon>
+        Spinning Wheel Game
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content class="game-content">
+      <!-- Spinning Wheel -->
+      <div class="wheel-container">
+        <div
+          class="wheel"
+          [style.transform]="'rotate(' + currentRotation + 'deg)'"
+          [class.spinning]="isSpinning"
+        >
+          @for (segment of segments; track $index) {
+            <div
+              class="segment"
+              [style.transform]="'rotate(' + ($index * segmentAngle) + 'deg)'"
+              [style.background-color]="segment.color"
+            >
+              <div class="segment-label">{{ segment.label }}</div>
+            </div>
+          }
+
+        </div>
+
+        <!-- Wheel pointer -->
+        <div class="wheel-pointer"></div>
+      </div>
+
+      <!-- Control buttons -->
+      <div class="controls">
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="isSpinning"
+          (click)="spinRandom()"
+          class="control-btn"
+        >
+          <mat-icon>shuffle</mat-icon>
+          Random Spin
+        </button>
+
+        <button
+          mat-raised-button
+          color="accent"
+          [disabled]="isSpinning"
+          (click)="spinPredetermined()"
+          class="control-btn"
+        >
+          <mat-icon>gps_fixed</mat-icon>
+          Pre-Determined Spin
+        </button>
+      </div>
+
+      <!-- Spinning indicator -->
+      @if (isSpinning) {
+        <div class="spinning-indicator">
+          <mat-progress-spinner
+            mode="indeterminate"
+            diameter="40"
+            color="primary">
+          </mat-progress-spinner>
+          <p>Spinning...</p>
+        </div>
+      }
+    </mat-card-content>
+  </mat-card>
+</div>
