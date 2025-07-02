@@ -12,7 +12,7 @@ export interface WheelSegment {
 })
 export class GameService {
   // Predefined wheel segments with colors
-  private readonly wheelSegments: WheelSegment[] = [
+  private readonly _wheelSegments: WheelSegment[] = [
     { id: 1, label: 'Prize A', color: '#FF6B6B' },
     { id: 2, label: 'Prize B', color: '#4ECDC4' },
     { id: 3, label: 'Prize C', color: '#45B7D1' },
@@ -23,35 +23,31 @@ export class GameService {
     { id: 8, label: 'Prize H', color: '#F7DC6F' }
   ];
 
-  // The predetermined segment (segment #3 as specified in requirements)
-  private readonly predeterminedSegmentId = 3;
+  private readonly _predeterminedSegmentId = 3;
+  private readonly selectedSegmentSubject = new BehaviorSubject<WheelSegment | null>(null);
 
-  // Current selected segment
-  private selectedSegmentSubject = new BehaviorSubject<WheelSegment | null>(null);
   public selectedSegment$ = this.selectedSegmentSubject.asObservable();
-
-  constructor() {}
 
   /**
    * Get all wheel segments
    */
-  getWheelSegments(): WheelSegment[] {
-    return this.wheelSegments;
+  public getWheelSegments(): WheelSegment[] {
+    return this._wheelSegments;
   }
 
   /**
    * Get the currently selected segment
    */
-  getSelectedSegment(): WheelSegment | null {
+  public getSelectedSegment(): WheelSegment | null {
     return this.selectedSegmentSubject.value;
   }
 
   /**
    * Select a random segment from the wheel
    */
-  selectRandomSegment(): WheelSegment {
-    const randomIndex = Math.floor(Math.random() * this.wheelSegments.length);
-    const selectedSegment = this.wheelSegments[randomIndex];
+  public selectRandomSegment(): WheelSegment {
+    const randomIndex = Math.floor(Math.random() * this._wheelSegments.length);
+    const selectedSegment = this._wheelSegments[randomIndex];
     this.selectedSegmentSubject.next(selectedSegment);
     return selectedSegment;
   }
@@ -59,35 +55,33 @@ export class GameService {
   /**
    * Select the predetermined segment (always segment #3)
    */
-  selectPredeterminedSegment(): WheelSegment {
-    const predeterminedSegment = this.wheelSegments.find(
-      segment => segment.id === this.predeterminedSegmentId
+  public selectPredeterminedSegment(): WheelSegment {
+    const predeterminedSegment = this._wheelSegments.find(
+      segment => segment.id === this._predeterminedSegmentId
     )!;
     this.selectedSegmentSubject.next(predeterminedSegment);
     return predeterminedSegment;
   }
 
-  /**
-   * Calculate the rotation angle needed to land on a specific segment
-   */
-  calculateRotationAngle(targetSegment: WheelSegment): number {
-    const segmentAngle = 360 / this.wheelSegments.length;
-    const targetIndex = this.wheelSegments.findIndex(s => s.id === targetSegment.id);
-
-    // Calculate base angle for the target segment (center of segment)
-    const baseAngle = targetIndex * segmentAngle + (segmentAngle / 2);
-
-    // Add multiple full rotations for visual effect (3-5 full spins)
-    const fullRotations = 3 + Math.random() * 2;
-    const totalRotation = (fullRotations * 360) + (360 - baseAngle);
-
-    return totalRotation;
-  }
+  // /**
+  //  * Calculate the rotation angle needed to land on a specific segment
+  //  */
+  // public calculateRotationAngle(targetSegment: WheelSegment, currentRotation: number): number {
+  //   // Calculate target rotation
+  //   // Each segment is 45 degrees apart (360/8)
+  //   // Segment 1 is at 0°, segment 2 at 45°, etc.
+  //   const targetAngle = (targetSegment.id - 1) * this._segmentAngle;
+  //
+  //   // Add multiple full rotations for visual effect (3-5 full spins)
+  //   const fullRotations = 3 + Math.random() * 2; // 3-5 rotations
+  //   const totalRotation = currentRotation + (fullRotations * 360) + (360 - targetAngle);
+  //   return  totalRotation;
+  // }
 
   /**
    * Reset the game state
    */
-  resetGame(): void {
+  public resetGame(): void {
     this.selectedSegmentSubject.next(null);
   }
 }
