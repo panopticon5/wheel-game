@@ -10,7 +10,7 @@ import {MatProgressSpinner} from '@angular/material/progress-spinner';
 @Component({
   selector: 'game',
   templateUrl: './game.component.html',
-  styleUrl: './game.component.css',
+  styleUrl: './game.component.scss',
   imports: [
     MatCard,
     MatCardHeader,
