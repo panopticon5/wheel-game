@@ -24,17 +24,17 @@ export class GameService {
   public selectedSegment$ = this._selectedSegmentSubject.asObservable();
 
   /**
+   * Get the currently selected segment
+   */
+  public get selectedSegment(): WheelSegment | null {
+    return this._selectedSegmentSubject.value;
+  }
+
+  /**
    * Get all wheel segments
    */
   public getWheelSegments(): WheelSegment[] {
     return this._wheelSegments;
-  }
-
-  /**
-   * Get the currently selected segment
-   */
-  public getSelectedSegment(): WheelSegment | null {
-    return this._selectedSegmentSubject.value;
   }
 
   /**

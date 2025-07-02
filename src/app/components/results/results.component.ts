@@ -21,7 +21,7 @@ export class ResultsComponent implements OnInit {
 
   public ngOnInit(): void {
     // Get the selected segment from the game state
-    this.selectedSegment = this._gameService.getSelectedSegment();
+    this.selectedSegment = this._gameService.selectedSegment;
 
     // If no segment is selected, redirect to welcome page
     if (!this.selectedSegment) {
