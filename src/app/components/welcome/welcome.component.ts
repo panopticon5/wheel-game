@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,7 +10,7 @@ import { GameService } from '../../services/game.service';
   standalone: true,
   templateUrl: './welcome.component.html',
   styleUrl: './welcome.component.scss',
-  imports: [CommonModule, RouterLink, MatButtonModule, MatCardModule, MatIconModule]
+  imports: [RouterLink, MatButtonModule, MatCardModule, MatIconModule]
 })
 export class WelcomeComponent {
   constructor(private _gameService: GameService) {}
