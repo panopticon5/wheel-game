@@ -10,6 +10,7 @@ import {WheelSegment} from '../../types/wheel.types';
 
 @Component({
   selector: 'game',
+  standalone: true,
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss',
   imports: [
