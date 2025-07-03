@@ -29,7 +29,7 @@ export class GameComponent implements OnInit, OnDestroy {
   public currentRotation: number = 0;
   public isSpinning: boolean = false;
 
-  private _spinTimeout?: number;
+  private _spinTimeout: number | undefined;
 
   constructor(
     private _gameService: GameService,
