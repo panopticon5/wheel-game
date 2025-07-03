@@ -1,0 +1,22 @@
+<!-- Spinning Wheel -->
+<div class="wheel-container">
+  <div
+    class="wheel"
+    [style.transform]="'rotate(' + currentRotation + 'deg)'"
+    [class.spinning]="isSpinning"
+  >
+    @for (segment of segments; track $index) {
+      <div
+        class="segment"
+        [style.transform]="'rotate(' + ($index * segmentAngle) + 'deg)'"
+        [style.background-color]="segment.color"
+      >
+        <div class="segment-label">{{ segment.label }}</div>
+      </div>
+    }
+
+  </div>
+
+  <!-- Wheel pointer -->
+  <div class="wheel-pointer"></div>
+</div>

@@ -7,6 +7,7 @@ import {of} from 'rxjs';
 import {MatButton} from '@angular/material/button';
 import {MatProgressSpinner} from '@angular/material/progress-spinner';
 import {WheelSegment} from '../../types/wheel.types';
+import {WheelComponent} from '../wheel/wheel.component';
 
 @Component({
   selector: 'game',
@@ -20,7 +21,8 @@ import {WheelSegment} from '../../types/wheel.types';
     MatIcon,
     MatCardContent,
     MatProgressSpinner,
-    MatButton
+    MatButton,
+    WheelComponent
   ]
 })
 export class GameComponent implements OnInit, OnDestroy {
