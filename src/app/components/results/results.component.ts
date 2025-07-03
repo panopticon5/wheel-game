@@ -2,13 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { GameService } from '../../services/game.service';
 import {WheelSegment} from '../../types/wheel.types';
+import {
+  MatCard,
+  MatCardContent,
+  MatCardHeader,
+  MatCardSubtitle,
+  MatCardTitle
+} from '@angular/material/card';
 
 @Component({
   selector: 'results',
   standalone: true,
   templateUrl: './results.component.html',
   styleUrl: './results.component.scss',
-  imports: [RouterLink]
+  imports: [RouterLink, MatCard, MatCardContent, MatCardHeader, MatCardTitle, MatCardSubtitle]
 })
 export class ResultsComponent implements OnInit {
   public selectedSegment: WheelSegment | null = null;
