@@ -9,14 +9,22 @@ html {
       tertiary: mat.$orange-palette
     ),
     typography: Roboto,
-    density: 0
+    density: 2
   ));
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+html, body {
+  height: 100%;
 }
 
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100%;
   padding: 20px;
 }

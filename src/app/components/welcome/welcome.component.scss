@@ -56,12 +56,11 @@
 
 .get-started-btn mat-icon {
   margin-right: 8px;
-  color: white;
 }
 
 .get-started-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(156, 39, 176, 0.3) !important;
+  // box-shadow: 0 8px 25px rgba(156, 39, 176, 0.3) !important;
 }
 
 @media (max-width: 768px) {
