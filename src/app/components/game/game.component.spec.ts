@@ -14,7 +14,7 @@ describe('Game Component', () => {
   const MOCK_WHEEL_SEGMENTS: WheelSegment[] = [
     { id: 1, label: 'Prize A', color: '#FF6B6B' },
     { id: 2, label: 'Prize B', color: '#4ECDC4' },
-    { id: 3, label: 'Prize C', color: '#45B7D1' }, // Predetermined segment
+    { id: 3, label: 'Prize C', color: '#45B7D1' },
     { id: 4, label: 'Prize D', color: '#96CEB4' },
     { id: 5, label: 'Prize E', color: '#FFEAA7' },
     { id: 6, label: 'Prize F', color: '#DDA0DD' },
@@ -29,7 +29,7 @@ describe('Game Component', () => {
       'selectRandomSegment',
       'selectPredeterminedSegment'
     ], {
-      selectedSegment$: of(null) // Mock the observable property
+      selectedSegment$: of(null)
     });
     mockRouter = jasmine.createSpyObj('Router', ['navigate']);
 
@@ -40,7 +40,7 @@ describe('Game Component', () => {
         { provide: GameService, useValue: mockGameService },
         { provide: Router, useValue: mockRouter }
       ]
-    }).compileComponents(); // Compile components if using templateUrl/styleUrls
+    }).compileComponents();
 
     fixture = TestBed.createComponent(GameComponent);
     component = fixture.componentInstance;
@@ -64,7 +64,7 @@ describe('Game Component', () => {
   describe('spinRandom method', () => {
     it('should call selectRandomSegment on GameService and perform spin', fakeAsync(() => {
       fixture.detectChanges(); // Call ngOnInit
-      const mockRandomSegment = MOCK_WHEEL_SEGMENTS[4]; // Example random segment
+      const mockRandomSegment = MOCK_WHEEL_SEGMENTS[4];
       mockGameService.selectRandomSegment.and.returnValue(mockRandomSegment);
       spyOn(component as any, '_performSpin').and.callThrough(); // Spy on the private method
 
