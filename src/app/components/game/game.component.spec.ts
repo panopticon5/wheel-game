@@ -33,7 +33,6 @@ describe('Game Component', () => {
     });
     mockRouter = jasmine.createSpyObj('Router', ['navigate']);
 
-    // Configure the testing module
     await TestBed.configureTestingModule({
       imports: [GameComponent],
       providers: [
