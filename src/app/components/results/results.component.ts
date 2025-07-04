@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { GameService } from '../../services/game.service';
-import {WheelSegment} from '../../types/wheel.types';
+import { WheelSegment } from '../../types/wheel.types';
 import {
   MatCard,
   MatCardContent,

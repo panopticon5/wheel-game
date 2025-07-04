@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import {ActivatedRoute, provideRouter, Router} from '@angular/router';
+import { ActivatedRoute, provideRouter, Router } from '@angular/router';
 import { ResultsComponent } from './results.component';
 import { GameService } from '../../services/game.service';
 import { WheelSegment } from '../../types/wheel.types';
-import {of} from 'rxjs';
+import { of } from 'rxjs';
 
 describe('Results Component', () => {
   let component: ResultsComponent;
