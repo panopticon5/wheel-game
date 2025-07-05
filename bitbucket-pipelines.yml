@@ -14,7 +14,6 @@ pipelines:
           - npm
         script:
           - npm ci
-          - npm install -g @angular/cli@20.0.4
 
     - step: &build-application
         name: Build application
@@ -22,7 +21,7 @@ pipelines:
           - node
           - npm
         script:
-          - ng build
+          - npx ng build --configuration=production
         artifacts:
           - dist/**
 
@@ -32,7 +31,7 @@ pipelines:
           - node
           - npm
         script:
-          - ng test --no-watch --no-progress --browsers=ChromeHeadless
+          - npx ng test --no-watch --no-progress --browsers=ChromeHeadless
         artifacts:
           - coverage/**
 
