@@ -18,7 +18,7 @@ pipelines:
         caches:
           - node
         script:
-          - npm run build
+          - ng build
         artifacts:
           - dist/**
 
@@ -27,7 +27,7 @@ pipelines:
         caches:
           - node
         script:
-          - npm run test -- --watch=false --browsers=ChromeHeadless --no-progress --code-coverage
+          - ng test --no-watch --no-progress --browsers=ChromeHeadless
         artifacts:
           - coverage/**
 
