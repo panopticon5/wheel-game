@@ -7,15 +7,15 @@ definitions:
 
 pipelines:
   default:
-    - step: &install-dependencies
-        name: Install dependencies
-        caches:
-          - node
-          - npm
-        script:
-          - npm ci
-          - npm install -D @angular/cli
-          - npx ng version
+#    - step: &install-dependencies
+#        name: Install dependencies
+#        caches:
+#          - node
+#          - npm
+#        script:
+#          - npm ci
+#          - npm install -D @angular/cli
+#          - npx ng version
 
     - step: &build-application
         name: Build application
@@ -23,6 +23,8 @@ pipelines:
           - node
           - npm
         script:
+          - npm ci
+          - npm install -D @angular/cli
           - npm run build
         artifacts:
           - dist/**
@@ -39,7 +41,7 @@ pipelines:
 
   branches:
     master:
-      - step: *install-dependencies
+#      - step: *install-dependencies
       - step: *build-application
       - step: *run-tests
 
