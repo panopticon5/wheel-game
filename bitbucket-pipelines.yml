@@ -21,7 +21,7 @@ pipelines:
           - node
           - npm
         script:
-          - npx ng build --configuration=production
+          - npx ng build
         artifacts:
           - dist/**
 
