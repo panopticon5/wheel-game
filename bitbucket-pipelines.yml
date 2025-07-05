@@ -23,7 +23,7 @@ pipelines:
           - node
           - npm
         script:
-          - ng build
+          - npm build
         artifacts:
           - dist/**
 
