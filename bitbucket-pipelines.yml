@@ -35,7 +35,7 @@ pipelines:
           - node
           - npm
         script:
-          - npm test
+          - npm run test
         artifacts:
           - coverage/**
 
