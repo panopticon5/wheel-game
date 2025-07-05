@@ -1,0 +1,43 @@
+image: node:20.19.0
+
+definitions:
+  caches:
+    node: /usr/local/share/.cache/yarn/v6
+    node_modules: node_modules
+
+pipelines:
+  default:
+    - step:
+        name: Install dependencies
+        caches:
+          - node
+          - node_modules
+        script:
+          - npm ci
+
+    - step:
+        name: Build application
+        caches:
+          - node
+          - node_modules
+        script:
+          - npm run build
+        artifacts:
+          - dist/**
+
+    - step:
+        name: Run tests
+        caches:
+          - node
+          - node_modules
+        script:
+          - npm run test -- --watch=false --browsers=ChromeHeadless --no-progress --code-coverage
+        artifacts:
+          - coverage/**
+
+
+options:
+  max-time: 3
+  size: 2x
+  node:
+    version: 20.19.0
