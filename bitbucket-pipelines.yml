@@ -3,35 +3,49 @@ image: node:20.19.0
 definitions:
   caches:
     node: /usr/local/share/.cache/yarn/v6
+    npm: ~/.npm
 
 pipelines:
   default:
-    - step:
+    - step: &install-dependencies
         name: Install dependencies
         caches:
           - node
+          - npm
         script:
           - npm ci
+          - npm install -g @angular/cli@20.0.4
 
-    - step:
+    - step: &build-application
         name: Build application
         caches:
           - node
+          - npm
         script:
           - ng build
         artifacts:
           - dist/**
 
-    - step:
+    - step: &run-tests
         name: Run tests
         caches:
           - node
+          - npm
         script:
           - ng test --no-watch --no-progress --browsers=ChromeHeadless
         artifacts:
           - coverage/**
 
+  branches:
+    master:
+      - step: *install-dependencies
+      - step: *build-application
+      - step: *run-tests
 
 options:
-  max-time: 3
-  size: 2x
+  max-time: 1
+
+docker:
+  services:
+    docker:
+      memory: 4096
