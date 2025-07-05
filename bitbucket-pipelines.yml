@@ -1,4 +1,4 @@
-image: node20-chromium132-alpine
+image: trion/ng-cli-karma:18-node20
 
 definitions:
   caches:
