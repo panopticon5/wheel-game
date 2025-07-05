@@ -14,6 +14,8 @@ pipelines:
           - npm
         script:
           - npm ci
+          - npm install -D @angular/cli
+          - npx ng version
 
     - step: &build-application
         name: Build application
