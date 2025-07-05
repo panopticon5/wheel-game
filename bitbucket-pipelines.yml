@@ -25,16 +25,9 @@ pipelines:
           - npm
         script:
           - npm ci
-          - apt-get update
-          - apt-get install -y --no-install-recommends \
-            chromium-browser \
-            libgbm-dev \
-            libatk-bridge2.0-0 \
-            libgconf-2-4 \
-            libgtk-3-0 \
-            libnss3 \
-            libxss1 \
-            libasound2
+          - snap refresh snapd || true
+          - snap install chromium --channel=stable 
+          - sleep 10
           - export CHROME_BIN=/usr/bin/chromium-browser
           - npm run test
         artifacts:
