@@ -1,4 +1,4 @@
-image: node:20.19.0
+image: trion/ng-cli-karma:18-node20.19.0 # Or specify a version like trion/ng-cli-karma:18-node20
 
 definitions:
   caches:
@@ -24,8 +24,7 @@ pipelines:
           - node
           - npm
         script:
-          - npm ci
-          - npm run test
+          - npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
         artifacts:
           - coverage/**
 
