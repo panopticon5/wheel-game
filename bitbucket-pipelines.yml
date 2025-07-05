@@ -3,7 +3,6 @@ image: node:20.19.0
 definitions:
   caches:
     node: /usr/local/share/.cache/yarn/v6
-    node_modules: node_modules
 
 pipelines:
   default:
@@ -11,7 +10,6 @@ pipelines:
         name: Install dependencies
         caches:
           - node
-          - node_modules
         script:
           - npm ci
 
@@ -19,7 +17,6 @@ pipelines:
         name: Build application
         caches:
           - node
-          - node_modules
         script:
           - npm run build
         artifacts:
@@ -29,7 +26,6 @@ pipelines:
         name: Run tests
         caches:
           - node
-          - node_modules
         script:
           - npm run test -- --watch=false --browsers=ChromeHeadless --no-progress --code-coverage
         artifacts:
@@ -39,5 +35,3 @@ pipelines:
 options:
   max-time: 3
   size: 2x
-  node:
-    version: 20.19.0
