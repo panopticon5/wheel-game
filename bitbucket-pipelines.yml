@@ -23,7 +23,7 @@ pipelines:
           - node
           - npm
         script:
-          - npm build
+          - npm run build
         artifacts:
           - dist/**
 
