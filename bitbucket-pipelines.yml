@@ -1,4 +1,4 @@
-image: shivjm/node-chromium:node20.19-chromium81-alpine
+image: node20-chromium132-alpine
 
 definitions:
   caches:
