@@ -35,7 +35,7 @@ pipelines:
           - node
           - npm
         script:
-          - npx ng test --no-watch --no-progress --browsers=ChromeHeadless
+          - npm test
         artifacts:
           - coverage/**
 
