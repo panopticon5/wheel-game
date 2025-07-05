@@ -1,4 +1,4 @@
-image: trion/ng-cli-karma:18-node20
+image: trion/ng-cli-karma:latest
 
 definitions:
   caches:
