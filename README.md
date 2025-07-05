@@ -1,6 +1,6 @@
-# WheelGame
+# Wheel Game
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.4.
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version `20.0.4`. Node version must be `20.19.0` or higher.
 
 ## Development server
 
