@@ -14,6 +14,7 @@ module.exports = function (config) {
     client: {
       jasmine: {},
     },
+    singleRun: true,
     jasmineHtmlReporter: {
       suppressAll: true // removes the duplicated traces
     },
