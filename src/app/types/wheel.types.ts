@@ -3,3 +3,9 @@ export interface WheelSegment {
   label: string;
   color: string;
 }
+
+export interface Spin {
+  targetAngle: number;
+  fullRotations: number;
+  totalRotation: number;
+}

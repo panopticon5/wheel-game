@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
-import {WheelSegment} from '../types/wheel.types';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { WheelSegment } from '../types/wheel.types';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +25,7 @@ export class GameService {
 
   /**
    * Get the currently selected segment
+   * @returns The currently selected segment
    */
   public get selectedSegment(): WheelSegment | null {
     return this._selectedSegmentSubject.value;
@@ -32,6 +33,7 @@ export class GameService {
 
   /**
    * Get all wheel segments
+   * @returns All the segments
    */
   public getWheelSegments(): WheelSegment[] {
     return this._wheelSegments;
@@ -39,6 +41,7 @@ export class GameService {
 
   /**
    * Select a random segment from the wheel
+   * @returns A random segment from the wheel
    */
   public selectRandomSegment(): WheelSegment {
     const randomIndex = Math.floor(Math.random() * this._wheelSegments.length);
@@ -48,7 +51,8 @@ export class GameService {
   }
 
   /**
-   * Select the predetermined segment (always segment #3)
+   * Select the predetermined segment
+   * @returns Always the segment #3
    */
   public selectPredeterminedSegment(): WheelSegment {
     const predeterminedSegment = this._wheelSegments.find(

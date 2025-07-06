@@ -9,6 +9,7 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { WheelSegment } from '../../types/wheel.types';
 import { WheelComponent } from '../wheel/wheel.component';
 import { WheelConfig } from '../../constants/wheel.constants';
+import { SpinService } from '../../services/spin.service';
 
 @Component({
   selector: 'game',
@@ -36,7 +37,8 @@ export class GameComponent implements OnInit, OnDestroy {
 
   constructor(
     private _gameService: GameService,
-    private _router: Router
+    private _router: Router,
+    private _spinService: SpinService
   ) {}
 
   public ngOnInit(): void {
@@ -67,23 +69,21 @@ export class GameComponent implements OnInit, OnDestroy {
 
   /**
    * Execute the spinning animation and navigate to results
+   * @param targetSegment - The target segment to land on
    */
   private _performSpin(targetSegment: WheelSegment): void {
     if (this.isSpinning) {
       return;
     }
 
-    // Prevent multiple spins triggered by user
     this.isSpinning = true;
 
-    // Calculate target rotation
-    // Each segment is 45 degrees apart (360/8)
-    // Segment 1 is at 0°, segment 2 at 45°, etc.
-    const targetAngle = (targetSegment.id - 1) * this.segmentAngle;
-
-    // Add multiple full rotations for visual effect (3-5 full spins)
-    const fullRotations = 3 + Math.random() * 2; // 3-5 rotations
-    const totalRotation = this.currentRotation + (fullRotations * WheelConfig.FULL_CIRCLE_DEGREES) + (WheelConfig.FULL_CIRCLE_DEGREES - targetAngle);
+    // Calculate spin parameters using the SpinService
+    const { totalRotation } = this._spinService.calculateSpin(
+      targetSegment,
+      this.segmentAngle,
+      this.currentRotation
+    );
 
     this.currentRotation = totalRotation;
 
