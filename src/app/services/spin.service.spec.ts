@@ -86,8 +86,8 @@ describe('Spin Service', () => {
       const result = service.calculateSpin(MOCK_SEGMENT, 45, 180);
 
       expect(result).toEqual({
-        targetAngle: 90,       // (3-1) * 45 = 90
-        fullRotations: 4,      // 3 + 0.5 * (5-3) = 4 (mocked random)
+        targetAngle: 90,  // (3-1) * 45 = 90
+        fullRotations: 4,  // 3 + 0.5 * (5-3) = 4 (mocked random)
         totalRotation: 180 + (4 * 360) + (360 - 90) // 180 + 1440 + 270 = 1890
       });
     });
