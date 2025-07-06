@@ -38,13 +38,6 @@ module.exports = function (config) {
       reporters: ['spec'],
     },
     reporters: ['progress', 'kjhtml'],
-    // browsers: ['ChromeHeadlessNoSandbox'],
-    // customLaunchers: {
-    //   ChromeHeadlessNoSandbox: {
-    //     base: 'ChromeHeadless',
-    //     flags: ['--no-sandbox']
-    //   }
-    // },
     restartOnFileChange: true
   });
 };
