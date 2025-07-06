@@ -8,7 +8,7 @@ import { MatButton } from '@angular/material/button';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { WheelSegment } from '../../types/wheel.types';
 import { WheelComponent } from '../wheel/wheel.component';
-import { WheelConfig } from '../../constants/app.constants';
+import { WheelConfig } from '../../constants/wheel.constants';
 
 @Component({
   selector: 'game',

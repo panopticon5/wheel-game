@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {WheelSegment} from '../../types/wheel.types';
-import { WheelConfig } from '../../constants/app.constants';
+import { WheelConfig } from '../../constants/wheel.constants';
 
 @Component({
   selector: 'wheel',
