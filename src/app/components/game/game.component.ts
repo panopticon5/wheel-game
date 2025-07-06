@@ -69,7 +69,9 @@ export class GameComponent implements OnInit, OnDestroy {
    * Execute the spinning animation and navigate to results
    */
   private _performSpin(targetSegment: WheelSegment): void {
-    if (this.isSpinning) return;
+    if (this.isSpinning) {
+      return;
+    }
 
     // Prevent multiple spins triggered by user
     this.isSpinning = true;
