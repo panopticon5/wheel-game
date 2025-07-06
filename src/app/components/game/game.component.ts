@@ -70,6 +70,7 @@ export class GameComponent implements OnInit, OnDestroy {
   private _performSpin(targetSegment: WheelSegment): void {
     if (this.isSpinning) return;
 
+    // Prevent multiple spins triggered by user
     this.isSpinning = true;
 
     // Calculate target rotation
@@ -90,6 +91,6 @@ export class GameComponent implements OnInit, OnDestroy {
     this._spinTimeout = window.setTimeout(() => {
       this.isSpinning = false;
       this._router.navigate(['/results']);
-    }, 3000); // 3 second spin duration
+    }, 3000); // 3-second delay
   }
 }
