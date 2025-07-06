@@ -1,6 +1,6 @@
 # Spin & Win - Wheel of Fortune Game
 
-<img src="screenshots/welcome.png" width="600" height="475"/>
+<img src="screenshots/welcome.png" width="400" height="296"/>
 
 ## Overview
 A modern, interactive wheel of fortune game built with Angular and Angular Material. Test your luck with the spinning wheel and win exciting prizes!
