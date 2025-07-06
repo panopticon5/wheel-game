@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {WheelSegment} from '../../types/wheel.types';
+import { WheelConfig } from '../../constants/app.constants';
 
 @Component({
   selector: 'wheel',
@@ -12,10 +13,10 @@ export class WheelComponent  {
   public segments: WheelSegment[] = [];
 
   @Input()
-  public currentRotation: number = 0;
+  public currentRotation: number = WheelConfig.CURRENT_ROTATION;
 
   @Input()
   public isSpinning: boolean = false;
 
-  public segmentAngle: number = 45; // 360 / 8
+  public segmentAngle: number = WheelConfig.SEGMENT_ANGLE;
 }

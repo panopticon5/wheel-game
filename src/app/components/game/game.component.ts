@@ -8,6 +8,7 @@ import { MatButton } from '@angular/material/button';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { WheelSegment } from '../../types/wheel.types';
 import { WheelComponent } from '../wheel/wheel.component';
+import { WheelConfig } from '../../constants/app.constants';
 
 @Component({
   selector: 'game',
@@ -27,8 +28,8 @@ import { WheelComponent } from '../wheel/wheel.component';
 })
 export class GameComponent implements OnInit, OnDestroy {
   public segments: WheelSegment[] = [];
-  public segmentAngle: number = 45; // 360 / 8 segments
-  public currentRotation: number = 0;
+  public segmentAngle: number = WheelConfig.SEGMENT_ANGLE;
+  public currentRotation: number = WheelConfig.CURRENT_ROTATION;
   public isSpinning: boolean = false;
 
   private _spinTimeout: number | undefined;
