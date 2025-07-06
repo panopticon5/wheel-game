@@ -1,5 +1,7 @@
 # Spin & Win - Wheel of Fortune Game
 
+![Welcome](/public/welcome.png)
+
 ## Overview
 A modern, interactive wheel of fortune game built with Angular and Angular Material. Test your luck with the spinning wheel and win exciting prizes!
 
@@ -9,6 +11,8 @@ A modern, interactive wheel of fortune game built with Angular and Angular Mater
 - Smooth spinning animation
 - 8 colorful segments with unique prizes
 - Visual pointer indicating the winning segment
+
+![Wheel](/public/game-screenshot.png)
 
 ### Game Modes
 #### Random Spin
@@ -22,6 +26,8 @@ A modern, interactive wheel of fortune game built with Angular and Angular Mater
 - Animated celebration when you win
 - Displays your prize with a trophy icon
 - Option to play again or return to the game
+
+![Results](/public/results.png)
 
 ### Modern UI/UX
 - Clean, responsive design using Angular Material
