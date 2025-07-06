@@ -5,7 +5,7 @@
     [style.transform]="'rotate(' + currentRotation + 'deg)'"
     [class.spinning]="isSpinning"
   >
-    @for (segment of segments; track $index) {
+    @for (segment of segments; track segment.id) {
       <div
         class="segment"
         [style.transform]="'rotate(' + ($index * segmentAngle) + 'deg)'"
