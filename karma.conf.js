@@ -15,6 +15,20 @@ module.exports = function (config) {
       jasmine: {},
     },
     singleRun: true,
+    autoWatch: false,
+    browsers: ['ChromeHeadless'],
+    customLaunchers: {
+      ChromeHeadless: {
+        base: 'Chrome',
+        flags: [
+          '--no-sandbox',
+          '--disable-gpu',
+          '--disable-web-security',
+          '--disable-features=VizDisplayCompositor',
+          '--headless'
+        ]
+      }
+    },
     jasmineHtmlReporter: {
       suppressAll: true // removes the duplicated traces
     },
