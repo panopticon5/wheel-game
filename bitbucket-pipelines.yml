@@ -35,4 +35,4 @@ pipelines:
       - step: *run-tests
 
 options:
-  max-time: 1
+  max-time: 2
