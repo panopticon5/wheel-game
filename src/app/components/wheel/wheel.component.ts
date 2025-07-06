@@ -13,7 +13,7 @@ export class WheelComponent  {
   public segments: WheelSegment[] = [];
 
   @Input()
-  public currentRotation: number = WheelConfig.CURRENT_ROTATION;
+  public currentRotation: number = WheelConfig.DEFAULT_ROTATION;
 
   @Input()
   public isSpinning: boolean = false;

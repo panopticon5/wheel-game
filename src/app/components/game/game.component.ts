@@ -29,7 +29,7 @@ import { WheelConfig } from '../../constants/app.constants';
 export class GameComponent implements OnInit, OnDestroy {
   public segments: WheelSegment[] = [];
   public segmentAngle: number = WheelConfig.SEGMENT_ANGLE;
-  public currentRotation: number = WheelConfig.CURRENT_ROTATION;
+  public currentRotation: number = WheelConfig.DEFAULT_ROTATION;
   public isSpinning: boolean = false;
 
   private _spinTimeout: number | undefined;
@@ -81,7 +81,7 @@ export class GameComponent implements OnInit, OnDestroy {
 
     // Add multiple full rotations for visual effect (3-5 full spins)
     const fullRotations = 3 + Math.random() * 2; // 3-5 rotations
-    const totalRotation = this.currentRotation + (fullRotations * 360) + (360 - targetAngle);
+    const totalRotation = this.currentRotation + (fullRotations * WheelConfig.FULL_CIRCLE_DEGREES) + (WheelConfig.FULL_CIRCLE_DEGREES - targetAngle);
 
     this.currentRotation = totalRotation;
 
