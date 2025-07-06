@@ -19,14 +19,7 @@ module.exports = function (config) {
     browsers: ['ChromeHeadless'],
     customLaunchers: {
       ChromeHeadless: {
-        base: 'Chrome',
-        flags: [
-          '--no-sandbox',
-          '--disable-gpu',
-          '--disable-web-security',
-          '--disable-features=VizDisplayCompositor',
-          '--headless'
-        ]
+        base: 'Chrome'
       }
     },
     jasmineHtmlReporter: {
