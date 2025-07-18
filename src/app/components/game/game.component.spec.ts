@@ -71,17 +71,17 @@ describe('Game Component', () => {
 
       expect(mockGameService.selectRandomSegment).toHaveBeenCalled();
       expect((component as any)._performSpin).toHaveBeenCalledWith(mockRandomSegment);
-      expect(component.isSpinning).toBeTrue();
+      expect(component.isSpinning()).toBeTrue();
 
       tick(3000); // Advance time by 3 seconds
-      expect(component.isSpinning).toBeFalse();
+      expect(component.isSpinning()).toBeFalse();
       expect(mockRouter.navigate).toHaveBeenCalledWith(['/results']);
     }));
 
     describe('when it is already spinning', () => {
       it('should not spin', () => {
         fixture.detectChanges();
-        component.isSpinning = true;
+        component.isSpinning.set(true);
         component.spinRandom();
 
         expect(component.currentRotation).toEqual(0);
@@ -100,17 +100,17 @@ describe('Game Component', () => {
 
       expect(mockGameService.selectPredeterminedSegment).toHaveBeenCalled();
       expect((component as any)._performSpin).toHaveBeenCalledWith(mockPredeterminedSegment);
-      expect(component.isSpinning).toBeTrue();
+      expect(component.isSpinning()).toBeTrue();
 
       tick(3000); // Advance time by 3 seconds
-      expect(component.isSpinning).toBeFalse();
+      expect(component.isSpinning()).toBeFalse();
       expect(mockRouter.navigate).toHaveBeenCalledWith(['/results']);
     }));
 
     describe('when it is already spinning', () => {
       it('should not spin', () => {
         fixture.detectChanges();
-        component.isSpinning = true;
+        component.isSpinning.set(true)
 
         component.spinPredetermined();
 
