@@ -16,7 +16,7 @@
         <button
           mat-raised-button
           color="primary"
-          [disabled]="isSpinning"
+          [disabled]="isSpinning()"
           (click)="spinRandom()"
           class="control-btn"
         >
@@ -27,7 +27,7 @@
         <button
           mat-raised-button
           color="accent"
-          [disabled]="isSpinning"
+          [disabled]="isSpinning()"
           (click)="spinPredetermined()"
           class="control-btn"
         >
@@ -37,7 +37,7 @@
       </div>
 
       <!-- Spinning indicator -->
-      @if (isSpinning) {
+      @if (isSpinning()) {
         <div class="spinning-indicator">
           <mat-progress-spinner
             mode="indeterminate"

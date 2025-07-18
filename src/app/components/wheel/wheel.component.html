@@ -3,7 +3,7 @@
   <div
     class="wheel"
     [style.transform]="'rotate(' + currentRotation + 'deg)'"
-    [class.spinning]="isSpinning"
+    [class.spinning]="isSpinning()"
   >
     @for (segment of segments; track segment.id) {
       <div

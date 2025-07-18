@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input, signal, WritableSignal } from '@angular/core';
 import {WheelSegment} from '../../types/wheel.types';
 import { WheelConfig } from '../../constants/wheel.constants';
 
@@ -16,7 +16,7 @@ export class WheelComponent  {
   public currentRotation: number = WheelConfig.DEFAULT_ROTATION;
 
   @Input()
-  public isSpinning: boolean = false;
+  public isSpinning: WritableSignal<boolean> = signal(false);
 
   public segmentAngle: number = WheelConfig.SEGMENT_ANGLE;
 }

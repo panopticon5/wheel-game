@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, WritableSignal, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { GameService } from '../../services/game.service';
 import { MatCard, MatCardContent, MatCardHeader, MatCardTitle } from '@angular/material/card';
@@ -31,7 +31,7 @@ export class GameComponent implements OnInit, OnDestroy {
   public segments: WheelSegment[] = [];
   public segmentAngle: number = WheelConfig.SEGMENT_ANGLE;
   public currentRotation: number = WheelConfig.DEFAULT_ROTATION;
-  public isSpinning: boolean = false;
+  public isSpinning: WritableSignal<boolean> = signal(false);
 
   private _spinTimeout: number | undefined;
 
@@ -47,7 +47,7 @@ export class GameComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void {
     if (this._spinTimeout) {
-      clearTimeout(this._spinTimeout);
+      clearTimeout(this._spinTimeout); // Prevent memory leaks
     }
   }
 
@@ -71,12 +71,14 @@ export class GameComponent implements OnInit, OnDestroy {
    * Execute the spinning animation and navigate to results
    * @param targetSegment - The target segment to land on
    */
-  private _performSpin(targetSegment: WheelSegment): void {
-    if (this.isSpinning) {
+  private _performSpin(targetSegment: WheelSegment | null): void {
+    if (this.isSpinning()) {
+      return;
+    } else if (!targetSegment) {
       return;
     }
 
-    this.isSpinning = true;
+    this.isSpinning.set(true);
 
     // Calculate spin parameters using the SpinService
     const { totalRotation } = this._spinService.calculateSpin(
@@ -92,7 +94,7 @@ export class GameComponent implements OnInit, OnDestroy {
 
     // Navigate to results after spin completes
     this._spinTimeout = window.setTimeout(() => {
-      this.isSpinning = false;
+      this.isSpinning.set(false);
       this._router.navigate(['/results']);
     }, 3000); // 3-second delay
   }

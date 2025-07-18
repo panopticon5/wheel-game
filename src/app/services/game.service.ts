@@ -54,10 +54,15 @@ export class GameService {
    * Select the predetermined segment
    * @returns Always the segment #3
    */
-  public selectPredeterminedSegment(): WheelSegment {
+  public selectPredeterminedSegment(): WheelSegment | null {
     const predeterminedSegment = this._wheelSegments.find(
       (segment: WheelSegment) => segment.id === this._predeterminedSegmentId
     )!;
+    // Error handling improvement
+    if (!predeterminedSegment) {
+      console.error('Predetermined segment not found');
+      return null;
+    }
     this._selectedSegmentSubject.next(predeterminedSegment);
     return predeterminedSegment;
   }
